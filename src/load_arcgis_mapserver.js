@@ -79,7 +79,9 @@ module.exports = function(options, callback) {
             const arcgisLODs = metadata.tileInfo.lods;
             const correctResolutions = MercatorZoomLevels;
             result.minzoom = arcgisLODs[0].level;
-            result.maxzoom = arcgisLODs[arcgisLODs.length - 1].level;
+            //change
+            result.maxzoom = 22;
+            // result.maxzoom = arcgisLODs[arcgisLODs.length - 1].level;
             for (let i = 0; i < arcgisLODs.length; i++) {
                 const arcgisLOD = arcgisLODs[i];
                 for (const ci in correctResolutions) {
@@ -91,9 +93,11 @@ module.exports = function(options, callback) {
                     }
                 }
             }
-        } else {
-            callback(new Error('non-mercator spatial reference'));
         }
+        //change
+        //  else {
+        //     callback(new Error('non-mercator spatial reference'));
+        // }
 
         callback(null, result);
     };
